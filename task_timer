@@ -1,0 +1,21 @@
+# task_timer.py
+
+import time
+import csv
+
+def time_task(task_name):
+    input("Press Enter to start timing...")
+    start = time.time()
+    input("Press Enter to stop timing...")
+    end = time.time()
+    duration = round(end - start, 2)
+    log_task(task_name, duration)
+    print(f"Task '{task_name}' completed in {duration} seconds.")
+
+def log_task(task_name, duration):
+    with open("task_log.csv", "a", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow([task_name, duration])
+
+# Sample usage
+time_task("Coding")
